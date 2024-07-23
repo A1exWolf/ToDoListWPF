@@ -1,0 +1,21 @@
+﻿<Window x:Class="ToDoList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoList"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Добро пожаловать в ToDoList" FontSize="20" TextAlignment="Center" Margin="0 10 0 0"/>
+            <Button x:Name="AuthBtn" Content="Авторизация" Margin="5" Click="Button_Click_Auth"/>
+            <Button x:Name="RegBtn" Content="Регистрация" Margin="5" Click="Button_Click_Reg"/>
+        </StackPanel>
+        <Frame Grid.Row="1" x:Name="AuthFrame" NavigationUIVisibility="Hidden" Navigated="AuthFrame_Navigated"/>
+    </Grid>
+</Window>
