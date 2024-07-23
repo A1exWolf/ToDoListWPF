@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ToDoList.Models;
 using ToDoList.Services;
+using ToDoList.Views;
 
 namespace ToDoList.Pages
 {
@@ -33,7 +34,7 @@ namespace ToDoList.Pages
             LoginFunc();
         }
 
-        public User LoginFunc()
+        public void LoginFunc()
         {
             using (var context = new ToDoListContext())
             {
@@ -43,15 +44,25 @@ namespace ToDoList.Pages
 
                 // Проверяем, существует ли пользователь
                 if (user == null)
-                    return null;
+                {
+                    MessageBox.Show("Пользователь не найден");
+                    return;
+                }
 
                 // Проверяем пароль
                 if (!PasswordHasher.VerifyPasswordHash(Password.Password.Trim(), user.PasswordHash, user.Salt))
-                    return null;
+                {
+                    MessageBox.Show("Неверный пароль");
+                    return;
+                }
+
                 MessageBox.Show("Аутентификация успешна");
-                // Аутентификация успешна
-                return user;
+
+                // Создаем и открываем новое окно, передавая объект user
+                MainUserWindow mainUserWindow = new MainUserWindow(user);
+                mainUserWindow.Show();
             }
         }
+
     }
 }

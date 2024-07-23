@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToDoList.Models;
 
 namespace ToDoList.Views
 {
@@ -19,7 +20,7 @@ namespace ToDoList.Views
     /// </summary>
     public partial class MainUserWindow : Window
     {
-        public MainUserWindow()
+        public MainUserWindow(User user)
         {
             InitializeComponent();
         }
